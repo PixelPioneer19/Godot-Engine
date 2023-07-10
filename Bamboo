@@ -1,0 +1,43 @@
+using System;
+
+class Program
+{
+    static int SubstringSearch(string text, string pattern)
+    {
+        int n = text.Length;
+        int m = pattern.Length;
+
+        for (int i = 0; i <= n - m; i++)
+        {
+            int j;
+
+            for (j = 0; j < m; j++)
+            {
+                if (text[i + j] != pattern[j])
+                    break;
+            }
+
+            if (j == m)
+                return i;
+        }
+
+        return -1;
+    }
+
+    static void Main()
+    {
+        string text = "Hello, world! This is a sample text.";
+        string pattern = "sample";
+
+        int index = SubstringSearch(text, pattern);
+
+        if (index != -1)
+        {
+            Console.WriteLine("Pattern found at index: " + index);
+        }
+        else
+        {
+            Console.WriteLine("Pattern not found in the text.");
+        }
+    }
+}
